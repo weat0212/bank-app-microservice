@@ -1,0 +1,32 @@
+<div class="container"><br><br>
+    <div class="row mb-4">
+        <div class="col-md-7">
+            <h2>案例清單</h2>
+        </div>
+    </div>
+    <div class="container">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>案例號碼</th>
+                    <th>電文代碼</th>
+                    <th>信用卡號</th>
+                    <th>信用卡客戶姓名</th>
+                    <th>上傳時間</th>
+                    <th>下載</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                <tr *ngFor="let case of cases">
+                    <td>{{case.caseNo}}</td>
+                    <td>{{case.msgNo}}</td>
+                    <td>{{case.cardNo}}</td>
+                    <td>{{case.name}}</td>
+                    <td>{{case.uploadTime | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                    <button (click)="download(case.caseNo)" class="btn">Download</button>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

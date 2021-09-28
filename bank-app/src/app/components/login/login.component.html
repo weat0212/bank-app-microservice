@@ -1,0 +1,38 @@
+<title>Login Page</title>
+<html>
+
+<body>
+    <br><br>
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-md-7">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <div class="container">
+
+                    <div class="alert alert-warning" *ngIf='invalidLogin' id="error_msg">{{errorMessage}}</div>
+
+                    <form>
+                        <div class="form-group">
+                            <legend>登入頁面</legend><br> 
+    
+                            <label for="username"  class="control-label">帳號：</label>
+                            <input type="text" name="username" [(ngModel)]="username" maxlength="32"><br><br> 
+                            <label for="password"  class="control-label">密碼：</label>
+                            <input type="password" name="password" [(ngModel)]="password" maxlength="32"><br><br>
+    
+                            <button class="btn btn-success" (click)=handleLogin()>登入</button>
+                            <span class="badge"><a routerLink="/registration">註冊</a></span>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+CREATE TABLE IF NOT EXISTS `user`
+(
+	id INT NOT NULL AUTO_INCREMENT,
+	first_name VARCHAR(30) NOT NULL,
+	last_name VARCHAR(30) NOT NULL,
+	email VARCHAR(125) NOT NULL,
+	password VARCHAR(255) NOT NULL, 
+	jwt_token VARCHAR(50),
+	PRIMARY KEY (id),
+	UNIQUE KEY (email)
+);
+
+CREATE TABLE IF NOT EXISTS `role`
+(
+	id INT NOT NULL AUTO_INCREMENT,
+	name VARCHAR(20) NOT NULL,
+	PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS `user_role`(
+	user_id INT NOT NULL,
+	role_id INT NOT NULL,
+	FOREIGN KEY (user_id) REFERENCES user(id),
+	FOREIGN KEY (role_id) REFERENCES role(id)
+);

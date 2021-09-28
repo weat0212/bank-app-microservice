@@ -1,0 +1,47 @@
+<div class="site-section">
+    <div class="container">
+        <br><br>
+        <div class="row mb-4">
+            <div class="col-md-7">
+                <h2>資料登錄系統</h2>
+                <div>
+                    <div *ngIf='submitted' class="alert alert-info">資料上傳成功</div>
+                    <div *ngIf='submitted && form.errors && form.dirty' class="alert alert-danger">資料輸入不完整</div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="mb-4">
+                    <form [formGroup]="form" (ngSubmit)="uploadForm()">
+                        <div class="form-group">
+                            <label for="caseNum">案例號碼</label>
+                            <input type="text" id="caseNum" formControlName="caseNum" class="form-control" />
+                            <small *ngIf='f.caseNum.errors && f.caseNum.dirty' class="error-message">資料輸入格式錯誤</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="emiNum">電文代碼</label>
+                            <input type="text" id="emiNum" formControlName="emiNum" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="creditCardNum">信用卡號</label>
+                            <input type="text" id="creditCardNum" formControlName="creditCardNum"
+                                placeholder="****-****-****-****" class="form-control" maxlength="16"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="customerName">信用卡客戶名稱</label>
+                            <input type="text" id="customerName" formControlName="customerName" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="uploadTime">上傳時間: {{myDate | date:'yyyy-MM-dd HH:mm:ss'}}</label>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success" (click)=uploadForm()>提交</button>
+                            <button type="button" (click)="onReset()" class="btn float-right">清空資料</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

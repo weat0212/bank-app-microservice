@@ -1,0 +1,14 @@
+<header>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div><a href="http://localhost:4200/" class="navbar-brand">Andy's Bank App</a></div>
+        <ul class="navbar-nav">
+            <li><a routerLink="/" class="nav-link">首頁</a></li>
+            <li><a routerLink="/filetrans" class="nav-link">登錄資料</a></li>
+            <li><a routerLink="/list" class="nav-link">案例清單</a></li>
+        </ul>
+        <ul class="navbar-nav navbar-collapse justify-content-end">
+            <li><a *ngIf='!auth.isLoggedIn()' routerLink="/login" class="nav-link">Login</a></li>
+            <li><a *ngIf='auth.isLoggedIn()' routerLink="/logout" class="nav-link">Logout</a></li>
+        </ul>
+    </nav>
+</header>

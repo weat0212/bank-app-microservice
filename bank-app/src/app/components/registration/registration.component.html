@@ -1,0 +1,59 @@
+<br>
+<br>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+
+            <div>
+                <div *ngIf='submitted' class="alert alert-info">註冊成功，請進行登入</div>
+                <div *ngIf='submitted && form.invalid && form.dirty' class="alert alert-danger">資料輸入不完整</div>
+            </div>
+
+            <h2>註冊帳號</h2>
+            <div class="register-form">
+                <form [formGroup]="form" (ngSubmit)="userRegistration()">
+
+                    <div class="form-group">
+                        <label for="firstName" class="control-label">姓氏 first name</label>
+                        <input id="firstName" formControlName="firstName" class="form-control"/>
+                        <small *ngIf='f.firstName.errors && f.firstName.dirty' class="error-message">資料輸入格式錯誤</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName" class="control-label">名字 last name</label>
+                        <input id="lastName" formControlName="lastName" class="form-control"/>
+                        <small *ngIf='f.lastName.errors && f.lastName.dirty' class="error-message">資料輸入格式錯誤</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="control-label">電子信箱 E-mail</label>
+                        <input id="email" formControlName="email" class="form-control" type="email" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"  maxlength="32" />
+                        <small *ngIf='f.email.errors && f.email.dirty' class="error-message">資料輸入格式錯誤</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="control-label">密碼 password</label>
+                        <input id="password" formControlName="password" class="form-control" type="password" maxlength="32"/>
+                        <small style="color: lightgray;">提示：必須包含至少各一個字母、數字、符號</small><br>
+                        <small *ngIf='f.password.errors && f.password.dirty' class="error-message">資料輸入格式錯誤</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword" class="control-label">再次確認密碼 confirm password</label>
+                        <input id="confirmPassword" formControlName="confirmPassword" class="form-control" type="password"/>
+                        <p *ngIf='f.confirmPassword.errors && f.confirmPassword.dirty' class="error-message">與密碼不符合，請重新輸入</p>
+                    </div>
+                    <div class="form-group">
+                        <input id="terms" formControlName="terms" type="checkbox" />
+                        <label class="control-label" for="terms">我已閱讀並同意<a href="#">約定條款</a>說明</label>
+                        <div>
+                            <small *ngIf='f.terms.errors && f.terms.touched' class="error-message">請勾選我同意</small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success" [disabled]="this.form.invalid">確認送出</button>
+                        <span class="badge">已註冊? <a routerLink="/login">登入</a></span>
+                        <button type="button" (click)="onReset()" class="btn float-right">清空資料</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
